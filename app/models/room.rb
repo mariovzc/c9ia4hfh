@@ -21,21 +21,21 @@ validates :title,
 =end 
 
   validates :title, 
-            :presence => {:message => "El titlo no puede estar en blanco :^(" }
+            :presence => {:message => "can't be blank" }
 
   validates :description, 
-            :presence => {:message => "La descripcion es obligatoria." },
+            :presence => {:message => "can't be blank" },
             :length => { :maximum => 400, :message => "DEben ser 400 caracteres!"}  
   validates :beds, 
-            :presence => {:message => "El titlo no puede estar en blanco :^(" }
+            :presence => {:message => "can't be blank" }
   
   validates :guests,
-            :presence => {:message => "Etse opmac se oirotagilbo im ogima" }
+            :presence => {:message => "can't be blank" }
   
   validates :beds,:guests,
             format: { with: /\A\d+\z/, message: "Solo numeros!!" }
   
   validates :image_url,
-            :presence => {:message => "Santas bativalidaciones tenemos problemas! este campo es obligatorio" }
+            :presence => {:message => "can't be blank" }
 
 end

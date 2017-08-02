@@ -5,8 +5,8 @@
 
       <%= form_for @room do |f| %>
 
-        <% @room.errors.messages.each do |msg| %>
-          <li><%= msg %></li>
+        <% @room.errors.messages.each do |attr, msg| %>
+          <li><%= attr%> - <%= msg[0] %></li>
         <% end %>
         <div class="form-group">
           <%= f.text_field :title, class: 'form-control input-lg', placeholder: "Título" %>
