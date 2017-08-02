@@ -32,7 +32,7 @@ validates :title,
   validates :guests,
             :presence => {:message => "Etse opmac se oirotagilbo im ogima" }
   
-  validates :beds,:guest,
+  validates :beds,:guests,
             format: { with: /\A\d+\z/, message: "Solo numeros!!" }
   
   validates :image_url,
