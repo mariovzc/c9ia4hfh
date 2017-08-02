@@ -13,20 +13,29 @@
 #
 
 class Room < ActiveRecord::Base
-  validates :title, presence: true,
-    message: "El titlo no puede estar en blanco :^("
+=begin
+validates :title, 
+          :presence => {:message => "Title can't be blank." },
+          :uniqueness => {:message => "Title already exists."},
+          :length => { :maximum => 100, :message => "Must be less than 100 characters"}  
+=end 
+
+  validates :title, 
+            :presence => {:message => "El titlo no puede estar en blanco :^(" }
+
+  validates :description, 
+            :presence => {:message => "La descripcion es obligatoria." },
+            :length => { :maximum => 400, :message => "DEben ser 400 caracteres!"}  
+  validates :beds, 
+            :presence => {:message => "El titlo no puede estar en blanco :^(" }
   
-    validates :description, presence: true, maximum:  400,
-    message: "La descripcion es obligatoria y maximo 400 caracteres!!!!!"
+  validates :guests,
+            :presence => {:message => "Etse opmac se oirotagilbo im ogima" }
   
-    validates :beds, presence: true,
-    message: "Este campo es obligatorio mi amigo"
+  validates :beds,:guest,
+            format: { with: /\A\d+\z/, message: "Solo numeros!!" }
   
-    validates :guests, presence: true,
-    message: "Etse opmac se oirotagilbo im ogima"
-  
-  validates :beds,:guest, format: { with: /\A\d+\z/, message: "Solo numeros!!" }
-  
-    validates :image_url, presence: true,
-    message: "Santas bativalidaciones tenemos problemas! este campo es obligatorio"
+  validates :image_url,
+            :presence => {:message => "Santas bativalidaciones tenemos problemas! este campo es obligatorio" }
+
 end

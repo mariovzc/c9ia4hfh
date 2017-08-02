@@ -4,6 +4,10 @@
       <h1><%= @room.new_record? ? "Publicar": "Editar" %> Habitación</h1>
 
       <%= form_for @room do |f| %>
+
+        <% @room.errors.messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
         <div class="form-group">
           <%= f.text_field :title, class: 'form-control input-lg', placeholder: "Título" %>
         </div>
