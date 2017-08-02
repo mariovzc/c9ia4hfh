@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
+      <% if @room.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+          <% @room.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
       <h1><%= @room.new_record? ? "Publicar": "Editar" %> Habitación</h1>
-
       <%= form_for @room do |f| %>
-
-        <% @room.errors.messages.each do |attr, msg| %>
-          <li><%= attr%> - <%= msg[0] %></li>
-        <% end %>
         <div class="form-group">
           <%= f.text_field :title, class: 'form-control input-lg', placeholder: "Título" %>
         </div>

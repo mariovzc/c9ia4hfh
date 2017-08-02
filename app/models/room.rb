@@ -20,22 +20,8 @@ validates :title,
           :length => { :maximum => 100, :message => "Must be less than 100 characters"}  
 =end 
 
-  validates :title, 
-            :presence => {:message => "can't be blank" }
-
-  validates :description, 
-            :presence => {:message => "can't be blank" },
-            :length => { :maximum => 400, :message => "DEben ser 400 caracteres!"}  
-  validates :beds, 
-            :presence => {:message => "can't be blank" }
-  
-  validates :guests,
-            :presence => {:message => "can't be blank" }
-  
-  validates :beds,:guests,
-            format: { with: /\A\d+\z/, message: "Solo numeros!!" }
-  
-  validates :image_url,
-            :presence => {:message => "can't be blank" }
+  validates :title, :description, :beds, :guests, :image_url, presence: true
+  validates :description, length: { maximum: 400 }
+  validates :beds, :guests, numericality: { only_integer: true }
 
 end
