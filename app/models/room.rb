@@ -13,4 +13,10 @@
 #
 
 class Room < ActiveRecord::Base
+  validates :title, presence: true
+  validates :description, presence: true, maximum:  400
+  validates :beds, presence: true
+  validates :guests, presence: true
+  validates :beds,:guest, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
+  validates :image_url, presence: true
 end
